@@ -1,2 +1,2 @@
-export * from '@/handlers/abstract'
-export * from '@/handlers/ts'
+export * from './abstract'
+export * from './ts'

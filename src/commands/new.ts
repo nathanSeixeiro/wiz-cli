@@ -1,6 +1,7 @@
-import { TypescriptHandle } from '@/handlers'
-import { INewCommand } from '@/interfaces'
 import { GluegunToolbox } from 'gluegun'
+
+import { TypescriptHandle } from '../handlers'
+import { INewCommand } from '../interfaces/New/new-command'
 
 module.exports = {
   name: 'new',
@@ -12,7 +13,9 @@ module.exports = {
     } = toolbox
 
     const name = parameters.first
+
     const tsHandle = new TypescriptHandle(toolbox)
+
     const request: INewCommand = { name }
     const spinner = spin('Generating files and installing dependencies')
 
@@ -20,6 +23,12 @@ module.exports = {
 
     spinner.stop()
 
-    success(`Done!!`)
+    success(`
+    Done! Generated your new project setup!!
+
+    Next:
+      $ cd ${name}
+      $ npm run dev
+`)
   },
 }
