@@ -1,8 +1,8 @@
 import { GluegunToolbox } from 'gluegun'
 
 import { INewCommand } from '../interfaces/New/new-command'
-import { GitHandle, TypescriptHandle } from '../handlers'
-import { DotEnvHandle } from '../handlers'
+
+import { GitHandle, TypescriptHandle, DotEnvHandle } from '../handlers'
 
 module.exports = {
   name: 'new',
