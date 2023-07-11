@@ -2,14 +2,15 @@
     "name": "<%= props.name %>",
     "version": "1.0.0",
     "main": "index.js",
+    "scripts": {
+        "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+        "build": "tsc"
+    },
     "devDependencies": {
         "@types/node": "^20.3.3",
         "ts-node": "^10.4.0",
         "ts-node-dev": "^1.1.8",
         "typescript": "*"
     },
-    "scripts": {
-        "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
-        "build": "tsc"
-    }
+   
 }

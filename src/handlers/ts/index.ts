@@ -13,6 +13,7 @@ export class TypescriptHandle extends AbstractHandle {
     await this.toolbox.template.generate({
       template: 'ts/package.json.ejs',
       target: `${name}/package.json`,
+      props: { name },
     })
 
     await this.toolbox.template.generate({

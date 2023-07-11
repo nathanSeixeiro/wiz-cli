@@ -9,7 +9,7 @@ module.exports = {
   run: async (toolbox: GluegunToolbox) => {
     const {
       parameters,
-      print: { success, spin },
+      print: { success, spin, info },
     } = toolbox
 
     const name = parameters.first
@@ -17,15 +17,14 @@ module.exports = {
     const tsHandle = new TypescriptHandle(toolbox)
 
     const request: INewCommand = { name }
-    const spinner = spin('Generating files and installing dependencies')
 
     tsHandle.handle(request)
 
+    const spinner = spin('Generating files and installing dependencies')
     spinner.stop()
 
-    success(`
-    Done! Generated your new project setup!!
-
+    success('Done! Generated your new project setup!!')
+    info(`
     Next:
       $ cd ${name}
       $ npm run dev
