@@ -7,8 +7,8 @@ export class TypescriptHandle extends AbstractHandle {
     super()
   }
 
-  public async handle(req: INewCommand) {
-    const name = req.name
+  public async handle(request: INewCommand) {
+    const { name } = request
 
     await this.toolbox.template.generate({
       template: 'ts/package.json.ejs',
@@ -23,6 +23,6 @@ export class TypescriptHandle extends AbstractHandle {
 
     await this.toolbox.system.run(`cd ${name} && npm install`)
 
-    return super.handle(req)
+    return super.handle(request)
   }
 }
