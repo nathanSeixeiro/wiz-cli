@@ -1,4 +1,5 @@
 export interface INewCommand {
   name: string
-  // initializeGitRepo: string
+  initializeGitRepo: string
+  // typeOfProject: string
 }

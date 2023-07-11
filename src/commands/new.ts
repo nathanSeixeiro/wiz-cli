@@ -1,8 +1,8 @@
 import { GluegunToolbox } from 'gluegun'
 
-import { TypescriptHandle } from '../handlers'
 import { INewCommand } from '../interfaces/New/new-command'
-import { DotEnvHandle } from '../handlers/dotenv'
+import { GitHandle, TypescriptHandle } from '../handlers'
+import { DotEnvHandle } from '../handlers'
 
 module.exports = {
   name: 'new',
@@ -11,16 +11,26 @@ module.exports = {
     const {
       parameters,
       print: { success, spin, info },
+      prompt: { ask },
     } = toolbox
 
     const name = parameters.first
 
     const tsHandle = new TypescriptHandle(toolbox)
     const envHandle = new DotEnvHandle(toolbox)
+    const gitHandle = new GitHandle(toolbox)
 
-    tsHandle.setNext(envHandle)
+    tsHandle.setNext(envHandle).setNext(gitHandle)
 
-    const request: INewCommand = { name }
+    const askInitializeGitRepo = {
+      type: 'confirm',
+      name: 'initializeGitRepo',
+      message: 'Do you want to initialize a Git repository?',
+    }
+
+    const { initializeGitRepo } = await ask([askInitializeGitRepo])
+
+    const request: INewCommand = { name, initializeGitRepo }
     const spinner = spin('Generating files and installing dependencies')
 
     await tsHandle.handle(request)
