@@ -1,4 +1,4 @@
-import { INewCommand } from '../../interfaces/New/new-command'
+import { INewCommand } from '../../interfaces'
 import { AbstractHandle } from '../abstract'
 import { GluegunToolbox } from 'gluegun'
 
