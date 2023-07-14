@@ -2,7 +2,12 @@ import { GluegunToolbox } from 'gluegun'
 
 import { INewCommand } from '../interfaces/New/new-command'
 
-import { GitHandle, TypescriptHandle, DotEnvHandle } from '../handlers'
+import {
+  GitHandle,
+  TypescriptHandle,
+  DotEnvHandle,
+  JestHandle,
+} from '../handlers'
 
 module.exports = {
   name: 'new',
@@ -19,8 +24,9 @@ module.exports = {
     const tsHandle = new TypescriptHandle(toolbox)
     const envHandle = new DotEnvHandle(toolbox)
     const gitHandle = new GitHandle(toolbox)
+    const jestHandle = new JestHandle(toolbox)
 
-    tsHandle.setNext(envHandle).setNext(gitHandle)
+    tsHandle.setNext(envHandle).setNext(gitHandle).setNext(jestHandle)
 
     const askInitializeGitRepo = {
       type: 'confirm',
@@ -37,11 +43,12 @@ module.exports = {
 
     spinner.stop()
 
-    success('Done! Generated your new project setup!!')
     info(`
-    Next:
+      Next:
       $ cd ${name}
       $ npm run dev
-`)
+    `)
+
+    success('Done! Generated your new project setup!!')
   },
 }
