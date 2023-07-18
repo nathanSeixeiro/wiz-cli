@@ -1,6 +1,6 @@
-# wiz CLI
+# wiz setup generate CLI
 
-A CLI for wiz.
+                                                A cli for generate setup for our awesome projects! 
 
 ## Customizing your CLI
 
