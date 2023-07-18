@@ -1,8 +1,8 @@
 import { log } from 'console'
-import { testJest } from '.'
+import { main } from '.'
 
 describe('test jest', () => {
   test('test jest', () => {
-    expect(testJest()).toEqual(log('teste jest'))
+    expect(main()).toEqual(log('Hello!'))
   })
 })

@@ -21,6 +21,16 @@ export class TypescriptHandle extends AbstractHandle {
       target: `${name}/tsconfig.json`,
     })
 
+    await this.toolbox.template.generate({
+      template: 'files/src/index.ts.ejs',
+      target: `${name}/src/index.ts`,
+    })
+
+    await this.toolbox.template.generate({
+      template: 'files/src/index.spec.ts.ejs',
+      target: `${name}/src/index.spec.ts`,
+    })
+
     await this.toolbox.system.run(`cd ${name} && npm install`)
 
     return super.handle(request)
