@@ -1,8 +1,8 @@
 # wiz setup generate CLI
 
-                                                A cli for generate setup for our awesome projects! 
+                                        A cli for generate setup for our awesome projects! 
 
-## Customizing your CLI
+## Customizing CLI
 
 Check out the documentation at https://github.com/infinitered/gluegun/tree/master/docs.
 
