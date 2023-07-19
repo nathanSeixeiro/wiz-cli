@@ -1,4 +1,4 @@
-import { GluegunToolbox } from 'gluegun'
+import { GluegunCommand, GluegunToolbox } from 'gluegun'
 
 import { INewCommand } from '../interfaces/New/new-command'
 
@@ -9,7 +9,7 @@ import {
   JestHandle,
 } from '../handlers'
 
-module.exports = {
+const command: GluegunCommand = {
   name: 'new',
   alias: ['n'],
   run: async (toolbox: GluegunToolbox) => {
@@ -52,3 +52,5 @@ module.exports = {
     success('Done! Generated your new project setup!!')
   },
 }
+
+module.exports = command
