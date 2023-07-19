@@ -7,7 +7,7 @@ import {
   TypescriptHandle,
   DotEnvHandle,
   JestHandle,
-} from '../handlers'
+} from '../handlers/TsHandlers'
 
 const command: GluegunCommand = {
   name: 'new',
@@ -35,12 +35,10 @@ const command: GluegunCommand = {
     }
 
     const { initializeGitRepo } = await ask([askInitializeGitRepo])
-
     const request: INewCommand = { name, initializeGitRepo }
     const spinner = spin('Generating files and installing dependencies')
 
     await tsHandle.handle(request)
-
     spinner.stop()
 
     info(`
@@ -48,7 +46,6 @@ const command: GluegunCommand = {
       $ cd ${name}
       $ npm run dev
     `)
-
     success('Done! Generated your new project setup!!')
   },
 }

@@ -1,6 +1,6 @@
 import { GluegunToolbox } from 'gluegun'
 import { AbstractHandle } from '../abstract'
-import { INewCommand } from '../../interfaces/New/new-command'
+import { INewCommand } from '../../../interfaces/New/new-command'
 
 export class DotEnvHandle extends AbstractHandle {
   constructor(private toolbox: GluegunToolbox) {
