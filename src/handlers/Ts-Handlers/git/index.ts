@@ -1,6 +1,6 @@
-import { INewCommand } from '../../interfaces'
-import { AbstractHandle } from '../abstract'
 import { GluegunToolbox } from 'gluegun'
+import { AbstractHandle } from '../../abstract'
+import { INewCommand } from '../../../interfaces'
 
 export class GitHandle extends AbstractHandle {
   constructor(private toolbox: GluegunToolbox) {
@@ -12,7 +12,7 @@ export class GitHandle extends AbstractHandle {
 
     if (initializeGitRepo) {
       await this.toolbox.template.generate({
-        template: 'git/.gitignore.ejs',
+        template: 'Ts-Templates/git/.gitignore.ejs',
         target: `${name}/.gitignore`,
       })
 

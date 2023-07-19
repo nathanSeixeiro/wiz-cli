@@ -1,6 +1,6 @@
 import { GluegunToolbox } from 'gluegun'
-import { AbstractHandle } from '../abstract'
-import { INewCommand } from '../../interfaces/New/new-command'
+import { AbstractHandle } from '../../abstract'
+import { INewCommand } from '../../../interfaces'
 
 export class TypescriptHandle extends AbstractHandle {
   constructor(private toolbox: GluegunToolbox) {
@@ -11,23 +11,23 @@ export class TypescriptHandle extends AbstractHandle {
     const { name } = request
 
     await this.toolbox.template.generate({
-      template: 'ts/package.json.ejs',
+      template: 'Ts-Templates/ts/package.json.ejs',
       target: `${name}/package.json`,
       props: { name },
     })
 
     await this.toolbox.template.generate({
-      template: 'ts/tsconfig.json.ejs',
+      template: 'Ts-Templates/ts/tsconfig.json.ejs',
       target: `${name}/tsconfig.json`,
     })
 
     await this.toolbox.template.generate({
-      template: 'files/src/index.ts.ejs',
+      template: 'Ts-Templates/files/src/index.ts.ejs',
       target: `${name}/src/index.ts`,
     })
 
     await this.toolbox.template.generate({
-      template: 'files/src/index.spec.ts.ejs',
+      template: 'Ts-Templates/files/src/index.spec.ts.ejs',
       target: `${name}/src/index.spec.ts`,
     })
 

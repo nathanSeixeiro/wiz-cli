@@ -1,6 +1,6 @@
 import { GluegunToolbox } from 'gluegun'
-import { AbstractHandle } from '../abstract'
-import { INewCommand } from '../../../interfaces/New/new-command'
+import { AbstractHandle } from '../../abstract'
+import { INewCommand } from '../../../interfaces'
 
 export class DotEnvHandle extends AbstractHandle {
   constructor(private toolbox: GluegunToolbox) {
@@ -11,12 +11,12 @@ export class DotEnvHandle extends AbstractHandle {
     const { name } = request
 
     await this.toolbox.template.generate({
-      template: 'env/.env.ejs',
+      template: 'Ts-Templates/env/.env.ejs',
       target: `${name}/.env`,
     })
 
     await this.toolbox.template.generate({
-      template: 'env/.env.example.ejs',
+      template: 'Ts-Templates/env/.env.example.ejs',
       target: `${name}/.env.example`,
     })
 

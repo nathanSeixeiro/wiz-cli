@@ -1,6 +1,6 @@
 import { GluegunToolbox } from 'gluegun'
-import { AbstractHandle } from '../abstract'
-import { INewCommand } from '../../interfaces/New/new-command'
+import { AbstractHandle } from '../../abstract'
+import { INewCommand } from '../../../interfaces'
 
 export class JestHandle extends AbstractHandle {
   constructor(private toolbox: GluegunToolbox) {
@@ -11,7 +11,7 @@ export class JestHandle extends AbstractHandle {
     const { name } = request
 
     await this.toolbox.template.generate({
-      template: 'jest/jest.config.js.ejs',
+      template: 'Ts-Templates/jest/jest.config.js.ejs',
       target: `${name}/jest.config.js`,
     })
 
