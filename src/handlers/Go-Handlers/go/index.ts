@@ -7,12 +7,14 @@ export class GoHandle extends AbstractHandle {
     super()
   }
 
-  public handle(request: INewCommand): void {
-    // const { name } = request.name
+  public async handle(request: INewCommand) {
+    const { name } = request
 
-    // await this.toolbox.template.generate({
-    //     template: ''
-    // })
+    await this.toolbox.template.generate({
+      template: 'Go-Templates/main.go.ejs',
+      target: `${name}/main.go`,
+      props: { name },
+    })
     return super.handle(request)
   }
 }
