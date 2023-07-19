@@ -1,2 +1,2 @@
-export * from './TsHandlers'
+export * from './Ts-Handlers'
 // export * from './GoHandlers'

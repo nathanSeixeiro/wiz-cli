@@ -7,7 +7,7 @@ import {
   TypescriptHandle,
   DotEnvHandle,
   JestHandle,
-} from '../handlers/TsHandlers'
+} from '../handlers/Ts-Handlers'
 
 const command: GluegunCommand = {
   name: 'new',
