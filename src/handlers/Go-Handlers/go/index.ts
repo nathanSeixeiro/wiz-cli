@@ -15,6 +15,10 @@ export class GoHandle extends AbstractHandle {
       target: `${name}/main.go`,
       props: { name },
     })
+
+    await this.toolbox.system.run(
+      `cd ${name} && go mod init github.com/nathanSeixeiro/${name}`
+    )
     return super.handle(request)
   }
 }
