@@ -7,6 +7,7 @@ import {
   DotEnvHandle,
   JestHandle,
 } from '../handlers/Ts-Handlers'
+import { Errors } from '../utils/errors'
 
 const command: GluegunCommand = {
   name: 'new-ts',
@@ -17,8 +18,13 @@ const command: GluegunCommand = {
       print: { success, spin, info },
       prompt: { ask },
     } = toolbox
+    const err = new Errors(toolbox)
 
     const name = parameters.first
+    if (!name) {
+      err.requiredName(name)
+      return
+    }
 
     const tsHandle = new TypescriptHandle(toolbox)
     const envHandle = new DotEnvHandle(toolbox)

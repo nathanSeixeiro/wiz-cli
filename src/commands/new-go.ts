@@ -1,6 +1,7 @@
 import { GluegunCommand, GluegunToolbox } from 'gluegun'
 import { INewCommand } from '../interfaces'
 import { GitHandle, GoHandle } from '../handlers/Go-Handlers'
+import { Errors } from '../utils/errors'
 
 const command: GluegunCommand = {
   name: 'new-go',
@@ -11,8 +12,13 @@ const command: GluegunCommand = {
       print: { success, spin, info },
       prompt: { ask },
     } = toolbox
+    const err = new Errors(toolbox)
 
     const name = parameters.first
+    if (!name) {
+      err.requiredName(name)
+      return
+    }
 
     const goHandle = new GoHandle(toolbox)
     const gitHandle = new GitHandle(toolbox)
