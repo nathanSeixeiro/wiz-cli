@@ -1,5 +1,5 @@
 import { GluegunCommand, GluegunToolbox } from 'gluegun'
-import { INewCommand } from '../interfaces'
+import { IGoCommand } from '../interfaces'
 import { GitHandle, GoHandle } from '../handlers/Go-Handlers'
 
 const command: GluegunCommand = {
@@ -31,7 +31,7 @@ const command: GluegunCommand = {
     }
 
     const { initializeGitRepo } = await ask([askInitializeGitRepo])
-    const request: INewCommand = { name, initializeGitRepo }
+    const request: IGoCommand = { name, initializeGitRepo }
     const spinner = spin('Generating files and installing dependencies')
 
     await goHandle.handle(request)
