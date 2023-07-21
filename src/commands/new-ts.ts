@@ -1,5 +1,5 @@
 import { GluegunCommand, GluegunToolbox } from 'gluegun'
-import { INewCommand } from '../interfaces/New/new-command'
+import { ITsCommand } from '../interfaces'
 
 import {
   GitHandle,
@@ -16,29 +16,44 @@ const command: GluegunCommand = {
       parameters,
       print: { success, spin, info },
       prompt: { ask },
+      requiredName,
     } = toolbox
 
     const name = parameters.first
     if (!name) {
-      toolbox.requiredName(name)
+      requiredName(name)
       return
     }
 
-    const tsHandle = new TypescriptHandle(toolbox)
-    const envHandle = new DotEnvHandle(toolbox)
     const gitHandle = new GitHandle(toolbox)
     const jestHandle = new JestHandle(toolbox)
+    const envHandle = new DotEnvHandle(toolbox)
+    const tsHandle = new TypescriptHandle(toolbox)
 
-    tsHandle.setNext(envHandle).setNext(gitHandle).setNext(jestHandle)
+    tsHandle.setNext(jestHandle).setNext(envHandle).setNext(gitHandle)
 
     const askInitializeGitRepo = {
       type: 'confirm',
       name: 'initializeGitRepo',
       message: 'Do you want to initialize a Git repository?',
     }
+    const askInitializeJestConfig = {
+      type: 'confirm',
+      name: 'jest',
+      message: 'Do you want to add Jest?',
+    }
+    const askInitializeDotEnv = {
+      type: 'confirm',
+      name: 'env',
+      message: 'Do you want to add env?',
+    }
 
-    const { initializeGitRepo } = await ask([askInitializeGitRepo])
-    const request: INewCommand = { name, initializeGitRepo }
+    const { initializeGitRepo, jest, env } = await ask([
+      askInitializeGitRepo,
+      askInitializeJestConfig,
+      askInitializeDotEnv,
+    ])
+    const request: ITsCommand = { name, initializeGitRepo, jest, env }
     const spinner = spin('Generating files and installing dependencies')
 
     await tsHandle.handle(request)
