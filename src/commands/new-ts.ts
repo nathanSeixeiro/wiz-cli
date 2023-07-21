@@ -7,7 +7,7 @@ import {
   DotEnvHandle,
   JestHandle,
 } from '../handlers/Ts-Handlers'
-import { Errors } from '../utils/errors'
+import { Errors } from '../extensions/errors'
 
 const command: GluegunCommand = {
   name: 'new-ts',

@@ -1,7 +1,7 @@
 import { GluegunCommand, GluegunToolbox } from 'gluegun'
 import { INewCommand } from '../interfaces'
 import { GitHandle, GoHandle } from '../handlers/Go-Handlers'
-import { Errors } from '../utils/errors'
+import { Errors } from '../extensions/errors'
 
 const command: GluegunCommand = {
   name: 'new-go',
