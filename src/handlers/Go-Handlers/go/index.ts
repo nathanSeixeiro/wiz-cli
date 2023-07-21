@@ -12,7 +12,7 @@ export class GoHandle extends AbstractHandle {
 
     await this.toolbox.template.generate({
       template: 'Go-Templates/main.go.ejs',
-      target: `${name}/main.go`,
+      target: `${name}/cmd/main.go`,
       props: { name },
     })
 
