@@ -1,11 +1,15 @@
 import { Toolbox } from 'gluegun/build/types/domain/toolbox'
 
-export class Errors {
-  constructor(private toolbox: Toolbox) {}
-  requiredName = (name: string) => {
+module.exports = (toolbox: Toolbox) => {
+  function requiredName(name: string, toolbox: Toolbox) {
+    const {
+      print: { error },
+    } = toolbox
     if (!name) {
-      this.toolbox.print.error('Project name must be specified!')
+      error('Project name must be specified!')
       return
     }
   }
+
+  toolbox.requiredName = requiredName
 }
