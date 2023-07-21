@@ -1,5 +1,4 @@
 import { GluegunCommand, GluegunToolbox } from 'gluegun'
-
 import { INewCommand } from '../interfaces/New/new-command'
 
 import {
@@ -10,8 +9,8 @@ import {
 } from '../handlers/Ts-Handlers'
 
 const command: GluegunCommand = {
-  name: 'new',
-  alias: ['n'],
+  name: 'new-ts',
+  alias: ['ts'],
   run: async (toolbox: GluegunToolbox) => {
     const {
       parameters,
