@@ -1,10 +1,10 @@
 import { GluegunCommand, GluegunToolbox } from 'gluegun'
 import { INewCommand } from '../interfaces'
-import { GoHandle } from '../handlers/Go-Handlers/go'
-import { GitHandle } from '../handlers'
+import { GitHandle, GoHandle } from '../handlers/Go-Handlers'
 
 const command: GluegunCommand = {
-  name: 'go',
+  name: 'new-go',
+  alias: ['go'],
   run: async (toolbox: GluegunToolbox) => {
     const {
       parameters,
