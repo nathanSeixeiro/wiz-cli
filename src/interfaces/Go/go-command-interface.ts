@@ -1,3 +1,3 @@
-import { INewCommand } from '../New/new-command'
+import { INewCommand } from '../index'
 
 export type IGoCommand = INewCommand

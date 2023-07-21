@@ -1,4 +1,4 @@
-import { INewCommand } from '../New/new-command'
+import { INewCommand } from '../index'
 
 export interface IHandle {
   setNext(handle: IHandle): IHandle
