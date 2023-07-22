@@ -32,11 +32,6 @@ const command: GluegunCommand = {
 
     tsHandle.setNext(jestHandle).setNext(envHandle).setNext(gitHandle)
 
-    const askInitializeGitRepo = {
-      type: 'confirm',
-      name: 'initializeGitRepo',
-      message: 'Do you want to initialize a Git repository?',
-    }
     const askInitializeJestConfig = {
       type: 'confirm',
       name: 'jest',
@@ -47,12 +42,20 @@ const command: GluegunCommand = {
       name: 'env',
       message: 'Do you want to add env?',
     }
+    const askInitializeGitRepo = {
+      type: 'confirm',
+      name: 'initializeGitRepo',
+      message: 'Do you want to initialize a Git repository?',
+    }
 
-    const { initializeGitRepo, jest, env } = await ask([
-      askInitializeGitRepo,
+    const options = [
       askInitializeJestConfig,
       askInitializeDotEnv,
-    ])
+      askInitializeGitRepo,
+    ]
+
+    const { jest, env, initializeGitRepo } = await ask(options)
+
     const request: ITsCommand = { name, initializeGitRepo, jest, env }
     const spinner = spin('Generating files and installing dependencies')
 

@@ -22,5 +22,6 @@ export class GitHandle extends AbstractHandle {
 
       return super.handle(request)
     }
+    return super.handle(request)
   }
 }

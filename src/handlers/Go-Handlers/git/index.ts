@@ -9,7 +9,6 @@ export class GitHandle extends AbstractHandle {
 
   public async handle(request: INewCommand) {
     const { name, initializeGitRepo } = request
-
     if (initializeGitRepo) {
       await this.toolbox.template.generate({
         template: 'Go-Templates/git/.gitignore.ejs',
@@ -22,5 +21,6 @@ export class GitHandle extends AbstractHandle {
 
       return super.handle(request)
     }
+    return super.handle(request)
   }
 }
