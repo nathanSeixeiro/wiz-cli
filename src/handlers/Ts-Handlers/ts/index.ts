@@ -8,7 +8,7 @@ export class TypescriptHandle extends AbstractHandle {
   }
 
   public async handle(request: ITsCommand) {
-    const { name } = request
+    const { name, env } = request
 
     await this.toolbox.template.generate({
       template: 'Ts-Templates/ts/package.json.ejs',
@@ -26,6 +26,9 @@ export class TypescriptHandle extends AbstractHandle {
       target: `${name}/src/index.ts`,
     })
 
+    if (env) {
+      await this.toolbox.system.run(`cd ${name} && npm install dotenv`)
+    }
     await this.toolbox.system.run(`cd ${name} && npm install`)
 
     return super.handle(request)
