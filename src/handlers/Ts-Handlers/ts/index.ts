@@ -8,7 +8,7 @@ export class TypescriptHandle extends AbstractHandle {
   }
 
   public async handle(request: ITsCommand) {
-    const { name, env } = request
+    const { name, env, jest } = request
 
     await this.toolbox.template.generate({
       template: 'Ts-Templates/ts/package.json.ejs',
@@ -27,10 +27,28 @@ export class TypescriptHandle extends AbstractHandle {
     })
 
     if (env) {
+      await this.installDotenv(name, env)
+    }
+
+    if (jest) {
+      await this.installJest(name, jest)
+    }
+
+    await this.toolbox.system.run(`cd ${name} && npm install`)
+    return super.handle(request)
+  }
+
+  async installDotenv(name: string, env: string) {
+    if (env) {
       await this.toolbox.system.run(`cd ${name} && npm install dotenv`)
     }
-    await this.toolbox.system.run(`cd ${name} && npm install`)
+  }
 
-    return super.handle(request)
+  async installJest(name: string, jest: string) {
+    if (jest) {
+      await this.toolbox.system.run(
+        `cd ${name} && npm install jest ts-jest @types/jest -D`
+      )
+    }
   }
 }
