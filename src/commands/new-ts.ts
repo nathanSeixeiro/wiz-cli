@@ -60,12 +60,12 @@ const command: GluegunCommand = {
     const spinner = spin('Generating files and installing dependencies')
 
     await tsHandle.handle(request)
-    spinner.stop()
+    spinner.succeed()
 
     info(`
-      Next:
-      $ cd ${name}
-      $ npm run dev
+    Next:
+    $ cd ${name}
+    $ npm run dev
     `)
     success('Done! Generated your new project setup!!')
   },
