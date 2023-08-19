@@ -6,9 +6,6 @@
      A cli for generate setup for our awesome projects! 
 </h3>
 
-
-<p align="center">Short slogan</p>
-
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/nathanSeixeiro/wiz-cli">
 
