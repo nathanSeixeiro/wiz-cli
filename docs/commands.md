@@ -1,4 +1,4 @@
-# Command Reference 
+# Command Reference  
 
 In the Wiz CLI we've three essential commands at the moment: 
 
@@ -14,11 +14,11 @@ In the Wiz CLI we've three essential commands at the moment:
 This command create a Typescript project 
 
 ```shell
-    wiz new-ts awesoneProject
+    wiz new-ts awesomeProject
 ```
 Or you can use the alias:
 ```shell
-    wiz ts awesoneProject
+    wiz ts awesomeProject
 ```
 
 After that you choose the options you want: 
