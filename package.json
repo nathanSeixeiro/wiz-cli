@@ -1,6 +1,6 @@
 {
   "name": "wiz-setup",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "wiz CLI",
   "types": "build/types/types.d.ts",
   "bin": {
