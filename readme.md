@@ -75,7 +75,7 @@ In the Wiz CLI we've three essential commands at the moment:
 - new-ts: for new Typescript projects
 - new-go: for new Golang projects
 
-See all info about `commands` [here]('/docs/commands.md')
+See all info about `commands` [here](https://github.com/nathanSeixeiro/wiz-cli/blob/main/docs/commands.md)
 
 ## 🤔 How to contribute
 
