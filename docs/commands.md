@@ -39,12 +39,12 @@ And just start development easy and quickly!
 This command create a Golang project 
 
 ```shell
-    wiz new-go awesoneProject
+    wiz new-go awesomeProject
 ```
 Or you can use the alias:
 
 ```shell
-    wiz go awesoneProject
+    wiz go awesomeProject
 ```
 
 After that you choose the options you want: 
