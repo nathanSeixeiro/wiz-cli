@@ -8,7 +8,7 @@ export class TypescriptHandle extends AbstractHandle {
   }
 
   public async handle(request: ITsCommand) {
-    const { name, env, jest, eslint } = request
+    const { name } = request
 
     await this.toolbox.template.generate({
       template: 'Ts-Templates/ts/package.json.ejs',
@@ -26,52 +26,40 @@ export class TypescriptHandle extends AbstractHandle {
       target: `${name}/src/index.ts`,
     })
 
-    if (env) {
-      await this.installDotenv(name, env)
-    }
-
-    if (jest) {
-      await this.installJest(name, jest)
-    }
-
-    await this.installDependencies(request, eslint)
-
+    await this.installDependencies(request)
     await this.toolbox.system.run(`cd ${name} && npm install`)
     return super.handle(request)
   }
 
-  private async installDependencies(req: ITsCommand, dependency: string): Promise<void> {
-    const { jest, env, eslint, name } = req
-
-    
-    if (dependency === jest) {
-      await this.toolbox.system.run(
-        `cd ${name} && npm install jest ts-jest @types/jest -D`
-      )
-    }
-
-    if (dependency === env) {
-      await this.toolbox.system.run(`cd ${name} && npm install dotenv`)
-    }
-
-    if (dependency === eslint) {
-      await this.toolbox.system.run(
-        `cd ${name} && npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript`
-        )
-    } 
+  private async installDotenv(path: string) {
+      await this.toolbox.system.run(`cd ${path} && npm install dotenv`)
   }
 
-  async installDotenv(name: string, env: string) {
+  private async installJest(path: string) {
+      await this.toolbox.system.run(
+        `cd ${path} && npm install jest ts-jest @types/jest -D`
+      )
+  }
+
+  private async installEslint(path: string) {
+      await this.toolbox.system.run(
+        `cd ${path} && npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript`
+      )
+  }
+
+  private async installDependencies({ ...params}: ITsCommand){
+    const {name, env, jest, eslint} = params
     if (env) {
-      await this.toolbox.system.run(`cd ${name} && npm install dotenv`)
+      await this.installDotenv(name)
     }
-  }
 
-  async installJest(name: string, jest: string) {
     if (jest) {
-      await this.toolbox.system.run(
-        `cd ${name} && npm install jest ts-jest @types/jest -D`
-      )
+      await this.installJest(name)
+    }
+    
+    if (eslint){
+      await this.installEslint(name)
     }
   }
 }
+
