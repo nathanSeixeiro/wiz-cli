@@ -8,7 +8,7 @@ export class TypescriptHandle extends AbstractHandle {
   }
 
   public async handle(request: ITsCommand) {
-    const { name, env, jest } = request
+    const { name, env, jest, eslint } = request
 
     await this.toolbox.template.generate({
       template: 'Ts-Templates/ts/package.json.ejs',
@@ -34,8 +34,31 @@ export class TypescriptHandle extends AbstractHandle {
       await this.installJest(name, jest)
     }
 
+    await this.installDependencies(request, eslint)
+
     await this.toolbox.system.run(`cd ${name} && npm install`)
     return super.handle(request)
+  }
+
+  private async installDependencies(req: ITsCommand, dependency: string): Promise<void> {
+    const { jest, env, eslint, name } = req
+
+    
+    if (dependency === jest) {
+      await this.toolbox.system.run(
+        `cd ${name} && npm install jest ts-jest @types/jest -D`
+      )
+    }
+
+    if (dependency === env) {
+      await this.toolbox.system.run(`cd ${name} && npm install dotenv`)
+    }
+
+    if (dependency === eslint) {
+      await this.toolbox.system.run(
+        `cd ${name} && npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript`
+        )
+    } 
   }
 
   async installDotenv(name: string, env: string) {

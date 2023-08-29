@@ -6,6 +6,7 @@ import {
   TypescriptHandle,
   DotEnvHandle,
   JestHandle,
+  EslintHandle,
 } from '../handlers/Ts-Handlers'
 
 const command: GluegunCommand = {
@@ -14,7 +15,7 @@ const command: GluegunCommand = {
   run: async (toolbox: GluegunToolbox) => {
     const {
       parameters,
-      print: { success, spin, info },
+      print: { success, info },
       prompt: { ask },
       requiredName,
     } = toolbox
@@ -29,13 +30,19 @@ const command: GluegunCommand = {
     const jestHandle = new JestHandle(toolbox)
     const envHandle = new DotEnvHandle(toolbox)
     const tsHandle = new TypescriptHandle(toolbox)
+    const eslintHandle = new EslintHandle(toolbox)
 
-    tsHandle.setNext(jestHandle).setNext(envHandle).setNext(gitHandle)
+    tsHandle.setNext(jestHandle).setNext(envHandle).setNext(gitHandle).setNext(eslintHandle)
 
     const askInitializeJestConfig = {
       type: 'confirm',
       name: 'jest',
       message: 'Do you want to add Jest?',
+    }
+    const askInitializeEslintConfig = {
+      type: 'confirm',
+      name: 'eslint',
+      message: 'Do you want to add eslint?',
     }
     const askInitializeDotEnv = {
       type: 'confirm',
@@ -50,17 +57,18 @@ const command: GluegunCommand = {
 
     const options = [
       askInitializeJestConfig,
+      askInitializeEslintConfig,
       askInitializeDotEnv,
       askInitializeGitRepo,
     ]
 
-    const { jest, env, initializeGitRepo } = await ask(options)
+    const { jest, env, eslint, initializeGitRepo } = await ask(options)
 
-    const request: ITsCommand = { name, initializeGitRepo, jest, env }
-    const spinner = spin('Generating files and installing dependencies')
+    const request: ITsCommand = { name, initializeGitRepo, jest, env, eslint }
+    // const spinner = spin('Generating files and installing dependencies')
 
     await tsHandle.handle(request)
-    spinner.succeed()
+    // spinner.succeed()
 
     info(`
     Next:
