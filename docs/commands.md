@@ -11,7 +11,7 @@ In the Wiz CLI we've three essential commands at the moment:
 
 <br />
 
-This command create a Typescript project 
+This command create a Typescript project template
 
 ```shell
     wiz new-ts awesomeProject
@@ -21,7 +21,7 @@ Or you can use the alias:
     wiz ts awesomeProject
 ```
 
-After that you choose the options you want: 
+After that you choose the options what you want: 
 - [jest](https://jestjs.io/pt-BR/) 
 - [env](https://www.npmjs.com/package/dotenv)
 - [git](https://git-scm.com/) 
