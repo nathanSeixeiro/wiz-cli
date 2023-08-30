@@ -32,23 +32,23 @@ export class TypescriptHandle extends AbstractHandle {
   }
 
   private async installDotenv(path: string) {
-      await this.toolbox.system.run(`cd ${path} && npm install dotenv`)
+    await this.toolbox.system.run(`cd ${path} && npm install dotenv`)
   }
 
   private async installJest(path: string) {
-      await this.toolbox.system.run(
-        `cd ${path} && npm install jest ts-jest @types/jest -D`
-      )
+    await this.toolbox.system.run(
+      `cd ${path} && npm install jest ts-jest @types/jest -D`
+    )
   }
 
   private async installEslint(path: string) {
-      await this.toolbox.system.run(
-        `cd ${path} && npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript`
-      )
+    await this.toolbox.system.run(
+      `cd ${path} && npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript`
+    )
   }
 
-  private async installDependencies({ ...params}: ITsCommand){
-    const {name, env, jest, eslint} = params
+  private async installDependencies({ ...params }: ITsCommand) {
+    const { name, env, jest, eslint } = params
     if (env) {
       await this.installDotenv(name)
     }
@@ -56,10 +56,9 @@ export class TypescriptHandle extends AbstractHandle {
     if (jest) {
       await this.installJest(name)
     }
-    
-    if (eslint){
+
+    if (eslint) {
       await this.installEslint(name)
     }
   }
 }
-
