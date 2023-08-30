@@ -112,4 +112,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made &nbsp;by Nathan Seixeiro 👨‍💻 &nbsp;[See my linkedin](https:/www.linkedin.com/in/nathan-seixeiro)
+Made &nbsp;by Nathan Seixeiro 👨‍💻 &nbsp;[See my LinkedIn](https://www.linkedin.com/in/nathan-seixeiro/)
