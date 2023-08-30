@@ -32,7 +32,11 @@ const command: GluegunCommand = {
     const tsHandle = new TypescriptHandle(toolbox)
     const eslintHandle = new EslintHandle(toolbox)
 
-    tsHandle.setNext(jestHandle).setNext(envHandle).setNext(gitHandle).setNext(eslintHandle)
+    tsHandle
+      .setNext(jestHandle)
+      .setNext(envHandle)
+      .setNext(gitHandle)
+      .setNext(eslintHandle)
 
     const askInitializeJestConfig = {
       type: 'confirm',
