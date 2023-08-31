@@ -1,5 +1,5 @@
-import { IHandle } from '../../interfaces/Abstract/abstract-handler'
-import { INewCommand } from '../../interfaces/New/new-command'
+import { IHandle } from '../../../interfaces/Abstract/abstract-handler'
+import { INewCommand } from '../../../interfaces/New/new-command'
 
 export class AbstractHandle implements IHandle {
   private nextHandle: IHandle

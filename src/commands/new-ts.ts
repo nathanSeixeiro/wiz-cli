@@ -1,8 +1,7 @@
 import { GluegunCommand, GluegunToolbox } from 'gluegun'
 import { ITsCommand } from '../interfaces'
-
+import { GitHandle } from '../handlers/common'
 import {
-  GitHandle,
   TypescriptHandle,
   DotEnvHandle,
   JestHandle,
