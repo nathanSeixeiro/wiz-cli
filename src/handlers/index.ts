@@ -1,1 +1,1 @@
-export * from './abstract'
+export * from './common/abstract'

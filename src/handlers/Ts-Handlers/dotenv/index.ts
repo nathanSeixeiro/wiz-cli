@@ -1,5 +1,5 @@
 import { GluegunToolbox } from 'gluegun'
-import { AbstractHandle } from '../../abstract'
+import { AbstractHandle } from '../../common/abstract'
 import { ITsCommand } from '../../../interfaces'
 
 export class DotEnvHandle extends AbstractHandle {

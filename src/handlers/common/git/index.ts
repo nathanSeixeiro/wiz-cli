@@ -1,13 +1,13 @@
 import { GluegunToolbox } from 'gluegun'
-import { AbstractHandle } from '../../abstract'
-import { ITsCommand } from '../../../interfaces'
+import { AbstractHandle } from '../abstract'
+import { INewCommand } from '../../../interfaces'
 
 export class GitHandle extends AbstractHandle {
   constructor(private toolbox: GluegunToolbox) {
     super()
   }
 
-  public async handle(request: ITsCommand) {
+  public async handle(request: INewCommand) {
     const { name, initializeGitRepo } = request
 
     if (initializeGitRepo) {

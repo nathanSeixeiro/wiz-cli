@@ -1,5 +1,5 @@
 import { GluegunToolbox } from 'gluegun'
-import { AbstractHandle } from '../../abstract'
+import { AbstractHandle } from '../../common/abstract'
 import { IJsCommand } from '../../../interfaces'
 
 export class JavascriptHandle extends AbstractHandle {
