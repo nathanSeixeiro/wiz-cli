@@ -1,13 +1,13 @@
 import { GluegunToolbox } from 'gluegun'
-import { AbstractHandle } from '../../common/abstract'
-import { ITsCommand } from '../../../interfaces'
+import { AbstractHandle } from '../../common'
+import { IJsCommand } from '../../../interfaces'
 
 export class JestHandle extends AbstractHandle {
   constructor(private toolbox: GluegunToolbox) {
     super()
   }
 
-  public async handle(request: ITsCommand) {
+  public async handle(request: IJsCommand) {
     const { name, jest } = request
     if (jest) {
       await this.toolbox.template.generate({
