@@ -8,7 +8,7 @@ const command: GluegunCommand = {
   run: async (toolbox: GluegunToolbox) => {
     const {
       parameters,
-      print: { success, spin, info },
+      print: { success, info },
       prompt: { ask },
       requiredName,
     } = toolbox
@@ -32,11 +32,7 @@ const command: GluegunCommand = {
 
     const { initializeGitRepo } = await ask([askInitializeGitRepo])
     const request: IGoCommand = { name, initializeGitRepo }
-    const spinner = spin('Generating files and installing dependencies')
-
     await goHandle.handle(request)
-    spinner.stop()
-
     info(`
       Next:
       $ cd ${name}
